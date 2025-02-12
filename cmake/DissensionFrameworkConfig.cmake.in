@@ -1,0 +1,14 @@
+@PACKAGE_INIT@
+
+# Propagate dependencies to downstream projects
+include(CMakeFindDependencyMacro)
+find_dependency(OpenGL REQUIRED)
+find_dependency(glfw3 REQUIRED)
+find_dependency(GLEW REQUIRED)
+find_dependency(PkgConfig REQUIRED)
+
+find_dependency(PkgConfig)
+pkg_check_modules(LUAJIT REQUIRED luajit)
+
+# Include the library targets
+include("${CMAKE_CURRENT_LIST_DIR}/DissensionFrameworkTargets.cmake")
