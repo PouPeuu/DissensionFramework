@@ -10,6 +10,7 @@ namespace DissensionFramework {
         GameObject();
 
         virtual void update();
+        virtual void draw() const;
     };
 }
 
