@@ -11,7 +11,7 @@ set(HEADER_DIR headers)
 set(RES_DIR res)
 
 file(GLOB SOURCES "${SRC_DIR}/*.cpp")
-file(GLOB HEADERS "${HEADER_DIR}/${PROJECT_NAME}/*.hpp" "${HEADER_DIR}/*.h")
+file(GLOB HEADERS "${HEADER_DIR}/${PROJECT_NAME}/*.hpp" "${HEADER_DIR}/${PROJECT_NAME}/*.h")
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES} ${HEADERS})
 
