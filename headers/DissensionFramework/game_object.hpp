@@ -9,10 +9,10 @@ namespace DissensionFramework {
     private:
         
     public:
-        GameObject();
+        GameObject() = default;
 
-        virtual State update();
-        virtual void draw() const;
+        virtual State update() {return NORMAL;};
+        virtual void draw() const {};
     };
 }
 
