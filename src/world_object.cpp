@@ -1,4 +1,4 @@
-#include <world_object.hpp>
+#include <DissensionFramework/world_object.hpp>
 
 DissensionFramework::WorldObject::WorldObject(glm::vec2 position, glm::vec2 scale, float rotation) {
     _transform.setTranslation(glm::vec3(position.x, position.y, 0.0));
