@@ -1,6 +1,8 @@
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
 
+#include <DissensionFramework/state.hpp>
+
 namespace DissensionFramework {
     class GameObject
     {
@@ -9,7 +11,7 @@ namespace DissensionFramework {
     public:
         GameObject();
 
-        virtual void update();
+        virtual State update();
         virtual void draw() const;
     };
 }
