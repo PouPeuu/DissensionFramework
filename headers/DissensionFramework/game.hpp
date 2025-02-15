@@ -11,6 +11,8 @@
 
 
 namespace DissensionFramework {
+    class GameObject;
+
     class Game {
         private:
             int _window_width, _window_height;

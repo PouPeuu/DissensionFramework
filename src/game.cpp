@@ -46,6 +46,7 @@ void DissensionFramework::Game::_main() {
 
 void DissensionFramework::Game::addGameObject(GameObject* game_object) {
     _game_objects.push_back(game_object);
+    game_object->connect_to_game(this);
 }
 
 
