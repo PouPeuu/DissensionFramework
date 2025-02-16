@@ -29,8 +29,10 @@ void DissensionFramework::Game::_main() {
         GameObject* game_object = _game_objects[i];
 
         State return_state = game_object->update();
-        if (return_state == QUEUE_DELETE)
+        if (return_state == QUEUE_DELETE) {
+            game_object->getDeletionSignal().emit();
             deletion_queue.push_back(i);
+        }
     }
 
     for (unsigned int i : deletion_queue) {
@@ -46,7 +48,7 @@ void DissensionFramework::Game::_main() {
 
 void DissensionFramework::Game::addGameObject(GameObject* game_object) {
     _game_objects.push_back(game_object);
-    game_object->connect_to_game(this);
+    game_object->connectToGame(this);
 }
 
 
