@@ -6,12 +6,18 @@ message(STATUS "${PROJECT_NAME} V 0.0.0 by PouPeuu")
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include(GNUInstallDirs)
+
 set(SRC_DIR src)
 set(HEADER_DIR headers)
 set(RES_DIR res)
 
 file(GLOB SOURCES "${SRC_DIR}/*.cpp")
 file(GLOB HEADERS "${HEADER_DIR}/${PROJECT_NAME}/*.hpp" "${HEADER_DIR}/${PROJECT_NAME}/*.h")
+
+set(HEADERS
+    ${HEADERS}
+)
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES} ${HEADERS})
 
@@ -42,6 +48,9 @@ install(TARGETS ${PROJECT_NAME}
 )
 
 install(DIRECTORY ${HEADER_DIR}/DissensionFramework DESTINATION include)
+install(DIRECTORY ${RES_DIR} DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME})
+
+configure_file(${HEADER_DIR}/${PROJECT_NAME}/config.hpp.in ${CMAKE_CURRENT_BINARY_DIR}/config.hpp)
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
