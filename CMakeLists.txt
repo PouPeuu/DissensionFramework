@@ -12,12 +12,10 @@ set(SRC_DIR src)
 set(HEADER_DIR headers)
 set(RES_DIR res)
 
-file(GLOB SOURCES "${SRC_DIR}/*.cpp")
-file(GLOB HEADERS "${HEADER_DIR}/${PROJECT_NAME}/*.hpp" "${HEADER_DIR}/${PROJECT_NAME}/*.h")
+configure_file(${HEADER_DIR}/${PROJECT_NAME}/config.hpp.in ${CMAKE_CURRENT_BINARY_DIR}/headers/config.hpp)
 
-set(HEADERS
-    ${HEADERS}
-)
+file(GLOB SOURCES "${SRC_DIR}/*.cpp")
+file(GLOB HEADERS "${HEADER_DIR}/${PROJECT_NAME}/*.hpp" "${HEADER_DIR}/${PROJECT_NAME}/*.h" "${CMAKE_CURRENT_BINARY_DIR}/headers/*.hpp")
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES} ${HEADERS})
 
@@ -35,7 +33,10 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${HEADER_DIR}>
+    $<BUILD_INTERFACE:
+        ${CMAKE_CURRENT_SOURCE_DIR}/${HEADER_DIR}
+        ${CMAKE_CURRENT_BINARY_DIR}/headers
+    >
     $<INSTALL_INTERFACE:include>
     ${LUAJIT_INCLUDE_DIRS}
 )
@@ -47,10 +48,8 @@ install(TARGETS ${PROJECT_NAME}
     RUNTIME DESTINATION bin
 )
 
-install(DIRECTORY ${HEADER_DIR}/DissensionFramework DESTINATION include)
+install(FILES ${HEADERS} DESTINATION include/${PROJECT_NAME})
 install(DIRECTORY ${RES_DIR} DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME})
-
-configure_file(${HEADER_DIR}/${PROJECT_NAME}/config.hpp.in ${CMAKE_CURRENT_BINARY_DIR}/config.hpp)
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
