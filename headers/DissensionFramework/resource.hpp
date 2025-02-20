@@ -2,6 +2,7 @@
 #define RESOURCE_H
 
 #include <filesystem>
+#include <vector>
 
 namespace DissensionFramework {
     class Resource {
@@ -9,6 +10,10 @@ namespace DissensionFramework {
         std::filesystem::path _filepath;
     public:
         Resource(std::filesystem::path filepath);
+
+        std::vector<unsigned char> getData();
+
+        std::string getRealPath();
     };
 }
 
