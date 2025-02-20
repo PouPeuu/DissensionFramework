@@ -14,6 +14,8 @@ namespace DissensionFramework {
         std::vector<unsigned char> getData();
 
         std::string getRealPath();
+
+        unsigned int getSize();
     };
 }
 

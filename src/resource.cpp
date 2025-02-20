@@ -39,3 +39,7 @@ std::vector<unsigned char> DissensionFramework::Resource::getData() {
 std::string DissensionFramework::Resource::getRealPath() {
     return _filepath.string();
 }
+
+unsigned int DissensionFramework::Resource::getSize() {
+    return std::filesystem::file_size(_filepath);
+}
