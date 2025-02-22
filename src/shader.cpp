@@ -44,6 +44,6 @@ DissensionFramework::Shader::Shader(Resource vertex_shader_resource, Resource fr
     glDeleteShader(fragment_shader);
 }
 
-void DissensionFramework::Shader::use() {
+void DissensionFramework::Shader::use() const {
     glUseProgram(_id);
 }

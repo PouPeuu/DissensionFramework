@@ -14,7 +14,7 @@ namespace DissensionFramework {
         public:
             Shader(Resource vertex_shader_resource, Resource fragment_shader_resource);
 
-            void use();
+            void use() const;
     };
 }
 
