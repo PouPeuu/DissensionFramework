@@ -1,4 +1,5 @@
 #include <DissensionFramework/game.hpp>
+#include <DissensionFramework/shaders.hpp>
 
 #include <stdexcept>
 #include <algorithm>
@@ -79,6 +80,8 @@ void DissensionFramework::Game::run() {
 
     glViewport(0, 0, _window_width, _window_height);
     glfwSetFramebufferSizeCallback(window, _setFramebufferSize);
+
+    Shaders::initShaders();
 
     while (!glfwWindowShouldClose(window)) {
         _processInput(window);
