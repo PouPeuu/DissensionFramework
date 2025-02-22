@@ -2,6 +2,7 @@
 #define GAME_OBJECT_H
 
 #include <DissensionFramework/game.hpp>
+#include <DissensionFramework/renderer.hpp>
 #include <DissensionFramework/state.hpp>
 #include <DissensionFramework/signal.hpp>
 
@@ -18,7 +19,7 @@ namespace DissensionFramework {
         GameObject() = default;
 
         virtual State update() {return NORMAL;};
-        virtual void draw() const {};
+        virtual void draw(const Renderer* renderer) const {};
 
         void connectToGame(Game* game);
 
