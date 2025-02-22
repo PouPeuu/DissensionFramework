@@ -7,9 +7,9 @@
 namespace DissensionFramework {
     class OpenGLRenderer : public Renderer {
     public:
-        void clear();
-        void drawPolygon(std::vector<glm::vec2> points, Color color);
-        void drawEquilateralPolygon(unsigned int count, float radius, Color color);
+        void clear() override;
+        void drawPolygon(std::vector<glm::vec2> points, Color color) override;
+        void drawEquilateralPolygon(unsigned int count, float radius, Color color) override;
     };
 }
 
