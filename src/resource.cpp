@@ -1,5 +1,5 @@
 #include <DissensionFramework/resource.hpp>
-#include <config.hpp>
+#include <DissensionFramework/config.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -22,7 +22,7 @@ DissensionFramework::Resource::Resource(std::filesystem::path filepath) {
             }
         }
 
-        _filepath = BUILTIN_RESOURCE_PATH / new_filepath;
+        _filepath = getBuiltinResourcePath() / new_filepath;
     } else {
         _filepath = "res" / filepath;
     }
