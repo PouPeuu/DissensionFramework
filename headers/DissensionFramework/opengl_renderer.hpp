@@ -5,7 +5,7 @@
 #include <DissensionFramework/opengl_includes.hpp>
 
 namespace DissensionFramework {
-    class OpenGLRenderer {
+    class OpenGLRenderer : public Renderer {
     public:
         void clear();
         void drawPolygon(std::vector<glm::vec2> points, Color color);
