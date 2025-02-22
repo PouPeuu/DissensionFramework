@@ -8,9 +8,9 @@
 namespace DissensionFramework {
     class Renderer {
     public:
-        virtual void clear() = 0;
-        virtual void drawPolygon(std::vector<glm::vec2> points, Color color) = 0;
-        virtual void drawEquilateralPolygon(unsigned int count, float radius, Color color) = 0;
+        virtual void clear() const = 0;
+        virtual void drawPolygon(std::vector<glm::vec2> points, Color color) const = 0;
+        virtual void drawEquilateralPolygon(unsigned int count, float radius, Color color) const = 0;
     };
 }
 

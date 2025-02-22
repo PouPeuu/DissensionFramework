@@ -2,11 +2,11 @@
 
 #include <DissensionFramework/shaders.hpp>
 
-void DissensionFramework::OpenGLRenderer::clear() {
+void DissensionFramework::OpenGLRenderer::clear() const {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void DissensionFramework::OpenGLRenderer::drawPolygon(std::vector<glm::vec2> points, Color color) {
+void DissensionFramework::OpenGLRenderer::drawPolygon(std::vector<glm::vec2> points, Color color) const {
     unsigned int vertices_size = points.size() * 2;
     float* vertices = new float[vertices_size];
     for (unsigned int i = 0; i < points.size(); i++) {
@@ -44,6 +44,6 @@ void DissensionFramework::OpenGLRenderer::drawPolygon(std::vector<glm::vec2> poi
     glDrawElements(GL_TRIANGLES, indices_size, GL_UNSIGNED_INT, 0);
 }
 
-void DissensionFramework::OpenGLRenderer::drawEquilateralPolygon(unsigned int count, float radius, Color color) {
+void DissensionFramework::OpenGLRenderer::drawEquilateralPolygon(unsigned int count, float radius, Color color) const {
     
 }
