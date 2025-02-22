@@ -42,8 +42,6 @@ void DissensionFramework::Game::_main() {
         _game_objects.pop_back();
     }
 
-    _renderer->clear();
-
     for (unsigned int i = 0; i < _game_objects.size(); i++) {
         GameObject* game_object = _game_objects[i];
         game_object->draw(_renderer);
@@ -83,13 +81,14 @@ void DissensionFramework::Game::run() {
 
     Shaders::initShaders();
 
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
     while (!glfwWindowShouldClose(window)) {
         _processInput(window);
         
+        _renderer->clear();
+        
         _main();
-
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
         
         glfwSwapBuffers(window);
         glfwPollEvents();
