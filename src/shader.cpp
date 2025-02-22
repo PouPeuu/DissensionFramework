@@ -7,7 +7,9 @@ unsigned int DissensionFramework::Shader::_compileShader(Resource shader_resourc
 
     shader = glCreateShader(shader_type);
     
-    const char* shader_source = (const char*)shader_resource.getData().data();
+    std::vector<unsigned char> data = shader_resource.getData();
+    const char* shader_source = reinterpret_cast<const char*>(data.data());
+
     const int size = (unsigned int)shader_resource.getSize();
     glShaderSource(shader, 1, &shader_source, &size);
 
