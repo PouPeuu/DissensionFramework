@@ -10,6 +10,7 @@ namespace DissensionFramework {
         std::filesystem::path _filepath;
     public:
         Resource(std::filesystem::path filepath);
+        Resource(const char* filepath) : Resource(std::filesystem::path(filepath)) {};
 
         std::vector<unsigned char> getData();
 
