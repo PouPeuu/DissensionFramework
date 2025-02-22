@@ -8,6 +8,7 @@
 #include <GLFW/glfw3.h>
 
 #include <DissensionFramework/game_object.hpp>
+#include <DissensionFramework/renderer.hpp>
 
 
 namespace DissensionFramework {
@@ -20,16 +21,20 @@ namespace DissensionFramework {
 
             std::vector<GameObject*> _game_objects;
 
+            Renderer* _renderer;
+
             static void _setFramebufferSize(GLFWwindow* window, int width, int height);
             void _processInput(GLFWwindow* window);
 
             void _main();
         public:
-            Game(int window_width, int window_height, std::string window_title = "DissensionFramework");
+            Game(int window_width, int window_height, Renderer* renderer, std::string window_title = "DissensionFramework");
 
             void run();
 
             void addGameObject(GameObject* game_object);
+
+            const Renderer* getRenderer();
     };
 }
 

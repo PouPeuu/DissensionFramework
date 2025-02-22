@@ -10,9 +10,10 @@ void DissensionFramework::Game::_setFramebufferSize(GLFWwindow* window, int widt
     game->_window_height = height;
 }
 
-DissensionFramework::Game::Game(int window_width, int window_height, std::string window_title) {
+DissensionFramework::Game::Game(int window_width, int window_height, Renderer* renderer, std::string window_title) {
     _window_width = window_width;
     _window_height = window_height;
+    _renderer = renderer;
     _window_title = window_title;
 }
 
@@ -40,15 +41,21 @@ void DissensionFramework::Game::_main() {
         _game_objects.pop_back();
     }
 
+    _renderer->clear();
+
     for (unsigned int i = 0; i < _game_objects.size(); i++) {
         GameObject* game_object = _game_objects[i];
-        game_object->draw();
+        game_object->draw(_renderer);
     }
 }
 
 void DissensionFramework::Game::addGameObject(GameObject* game_object) {
     _game_objects.push_back(game_object);
     game_object->connectToGame(this);
+}
+
+const DissensionFramework::Renderer* DissensionFramework::Game::getRenderer() {
+    return _renderer;
 }
 
 
