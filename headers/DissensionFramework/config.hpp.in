@@ -3,7 +3,13 @@
 
 #include <filesystem>
 
-std::filesystem::path BUILTIN_RESOURCE_PATH = "@CMAKE_INSTALL_FULL_DATADIR@/@PROJECT_NAME@/res";
-
+namespace DissensionFramework {
+    inline const std::filesystem::path& getBuiltinResourcePath() {
+        static const std::filesystem::path path = []{
+            return std::filesystem::path("@CMAKE_INSTALL_FULL_DATADIR@/@PROJECT_NAME@/res");
+        }();
+        return path;
+    }
+}
 
 #endif
