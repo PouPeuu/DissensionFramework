@@ -30,8 +30,9 @@ void DissensionFramework::Game::_main() {
     for (unsigned int i = 0; i < _game_objects.size(); i++) {
         GameObject* game_object = _game_objects[i];
 
-        State return_state = game_object->update();
-        if (return_state == QUEUE_DELETE) {
+        game_object->update();
+        State return_state = game_object->getState();
+        if (return_state.should_delete) {
             game_object->getDeletionSignal().emit();
             deletion_queue.push_back(i);
         }
@@ -44,7 +45,8 @@ void DissensionFramework::Game::_main() {
 
     for (unsigned int i = 0; i < _game_objects.size(); i++) {
         GameObject* game_object = _game_objects[i];
-        game_object->draw(_renderer);
+        if (game_object->getState().should_redraw)
+            game_object->draw(_renderer);
     }
 }
 

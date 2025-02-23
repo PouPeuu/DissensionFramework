@@ -13,15 +13,18 @@ namespace DissensionFramework {
     protected:
         Game* _game;
         Signal _deletion_signal;
+        State _state;
 
         virtual void _connectedToGame() {};
     public:
         GameObject() = default;
 
-        virtual State update() {return NORMAL;};
+        virtual void update() {};
         virtual void draw(const Renderer* renderer) const {};
 
         void connectToGame(Game* game);
+        
+        State getState();
 
         Signal& getDeletionSignal();
     };
