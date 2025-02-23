@@ -56,12 +56,12 @@ void DissensionFramework::OpenGLRenderer::drawPolygon(std::vector<glm::vec2> poi
     glDeleteBuffers(1, &EBO);
 }
 
-void DissensionFramework::OpenGLRenderer::drawEquilateralPolygon(unsigned int count, float radius, Color color) const {
+void DissensionFramework::OpenGLRenderer::drawEquilateralPolygon(unsigned int count, float radius, Color color, float offset) const {
     std::vector<glm::vec2> points;
 
     float interval = M_PI * 2 / count;
     for (unsigned int i = 0; i < count; i++) {
-        float angle = interval * i;
+        float angle = interval * i+ offset;
         points.push_back(glm::vec2(cos(angle), sin(angle)) * radius);
     }
 

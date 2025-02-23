@@ -9,7 +9,7 @@ namespace DissensionFramework {
     public:
         void clear() const override;
         void drawPolygon(std::vector<glm::vec2> points, Color color) const override;
-        void drawEquilateralPolygon(unsigned int count, float radius, Color color) const override;
+        void drawEquilateralPolygon(unsigned int count, float radius, Color color, float offset = 0.0) const override;
     };
 }
 
