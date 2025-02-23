@@ -24,7 +24,7 @@ namespace DissensionFramework {
 
         void connectToGame(Game* game);
         
-        State getState();
+        State getState() {return _state;};
 
         Signal& getDeletionSignal();
     };
