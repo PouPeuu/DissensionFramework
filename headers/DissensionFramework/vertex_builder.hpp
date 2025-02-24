@@ -14,7 +14,9 @@ namespace DissensionFramework {
             VertexBuilder& vertex(float x, float y, float z);
             VertexBuilder& vertex(glm::vec3 pos);
             VertexBuilder& color(float r, float g, float b, float a);
-            VertexBuilder& color(Color color);
+            VertexBuilder& color(Color __color);
+            VertexBuilder& uv(float u, float v);
+            VertexBuilder& uv(glm::vec2 __uv);
 
             std::vector<float> build();
     };
