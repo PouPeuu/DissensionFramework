@@ -23,6 +23,8 @@ namespace DissensionFramework {
 
             Renderer* _renderer;
 
+            double _last_time;
+
             static void _setFramebufferSize(GLFWwindow* window, int width, int height);
             void _processInput(GLFWwindow* window);
 

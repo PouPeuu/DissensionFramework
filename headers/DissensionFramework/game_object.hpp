@@ -19,7 +19,7 @@ namespace DissensionFramework {
     public:
         GameObject() = default;
 
-        virtual void update() {};
+        virtual void update(double delta_time) {};
         virtual void draw(const Renderer* renderer) const {};
 
         void connectToGame(Game* game);

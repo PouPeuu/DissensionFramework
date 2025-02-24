@@ -25,12 +25,16 @@ void DissensionFramework::Game::_processInput(GLFWwindow* window) {
 
 
 void DissensionFramework::Game::_main() {
+    double current_time = glfwGetTime();
+    double delta_time = current_time - _last_time;
+    _last_time = current_time;
+
     std::vector<unsigned int> deletion_queue;
 
     for (unsigned int i = 0; i < _game_objects.size(); i++) {
         GameObject* game_object = _game_objects[i];
 
-        game_object->update();
+        game_object->update(delta_time);
         State return_state = game_object->getState();
         if (return_state.should_delete) {
             game_object->getDeletionSignal().emit();
@@ -84,6 +88,8 @@ void DissensionFramework::Game::run() {
     Shaders::initShaders();
 
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    _last_time = glfwGetTime();
 
     while (!glfwWindowShouldClose(window)) {
         _processInput(window);
