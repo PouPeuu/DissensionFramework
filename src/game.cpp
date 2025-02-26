@@ -1,5 +1,6 @@
 #include <DissensionFramework/game.hpp>
 #include <DissensionFramework/shaders.hpp>
+#include <DissensionFramework/vertex_arrays.hpp>
 
 #include <stdexcept>
 #include <algorithm>
@@ -86,6 +87,7 @@ void DissensionFramework::Game::run() {
     glfwSetFramebufferSizeCallback(window, _setFramebufferSize);
 
     Shaders::initShaders();
+    VertexArrays::initVertexArrays();
 
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
